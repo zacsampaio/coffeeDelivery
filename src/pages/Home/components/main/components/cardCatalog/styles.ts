@@ -6,19 +6,52 @@ export const CardCatalagComponents = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  width: 16rem;
-  height: 20rem;
+  width: 100%;
+  max-width: 16rem;
+  min-width: 12rem;
+  height: auto;
   background: ${(props) => props.theme["gray-200"]};
   border-radius: 8px 35px 8px 35px;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   img {
     margin-top: calc(0px - 1.3rem - 1px);
+    width: 80%;
+    max-width: 120px;
   }
 
   h3 {
     font-family: "Baloo 2", sans-serif;
     color: ${(props) => props.theme["gray-800"]};
     font-size: 1.125rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 14rem;
+
+    img {
+      max-width: 100px;
+    }
+  }
+
+  @media (max-width: 555px) {
+    max-width: 16rem;
+
+    img {
+      max-width: 80px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    width: 100%;
+    img {
+      max-width: 60px;
+    }
   }
 `;
 
@@ -30,6 +63,7 @@ export const TagDescription = styled.p`
   padding: 8px;
   color: ${(props) => props.theme["gray-600"]};
   font-weight: 500;
+  word-wrap: break-word;
 `;
 
 export const TagValue = styled.div`
@@ -44,6 +78,7 @@ export const TagValue = styled.div`
     color: ${(props) => props.theme["gray-700"]};
   }
 `;
+
 export const TagValueSpan = styled.span`
   font-size: 1.5rem;
   font-weight: 800;
@@ -57,4 +92,6 @@ export const TagsComponents = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-`
+  flex-wrap: wrap;
+  justify-content: center;
+`;

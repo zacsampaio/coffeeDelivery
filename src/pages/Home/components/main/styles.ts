@@ -21,4 +21,26 @@ export const HeaderMainCatalog = styled.div`
   @media (max-width: 1440px) {
     justify-content: flex-start; 
   }
+
+  @media (max-width: 1024px) {
+    justify-content: center; 
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem; 
+  }
+
+  @media (max-width: 555px) {
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  @media (max-width: 471px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 375px) {
+    gap: 0.5rem;
+  }
 `

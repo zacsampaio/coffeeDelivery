@@ -3,10 +3,13 @@ import styled from "styled-components";
 export const CheckoutComponents = styled.div`
   background: ${(props) => props.theme["white"]};
   display: grid;
-  grid-template-columns: 1fr 448px;
-  justify-content: space-between;
+  grid-template-columns: 1fr;
   gap: 2rem;
-  flex-wrap: wrap;
+  padding-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 448px;
+  }
 `;
 
 export const CheckoutAreaForm = styled.div`
@@ -68,11 +71,15 @@ export const CheckoutFormTitles = styled.div`
 export const CheckoutFormInputs = styled.div`
   display: grid;
   justify-content: space-between;
-  grid-template-columns: 12.5rem 1fr 4rem;
+  grid-template-columns: 1fr;
   gap: 1rem;
 
   input {
     width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    grid-template-columns: 12.5rem 1fr 4rem;
   }
 `;
 
@@ -133,6 +140,10 @@ export const CheckoutPaymentMethodsButtons = styled.div`
     &:hover {
       background: ${(props) => props.theme["gray-500"]};
     }
+
+    @media (min-width: 480px) {
+      flex: 1 1 auto;
+    }
   }
 `;
 
@@ -158,10 +169,11 @@ export const CheckoutPayments = styled.div`
   background: ${(props) => props.theme["gray-200"]};
   border-radius: 8px;
   padding: 2.5rem;
-  width: 28rem;
+  width: 100%;
+  max-width: 28rem;
   overflow-wrap: break-word;
-
   border-radius: 8px 35px 8px 35px;
+  margin-bottom: 2rem;
 `;
 
 export const CheckoutTotalItems = styled.div`
@@ -194,7 +206,8 @@ export const CheckoutTotal = styled.div`
 export const ConfirmedButton = styled.button`
   color: ${(props) => props.theme["white"]};
   background: ${(props) => props.theme["yellow-300"]};
-  width: 23rem;
+  max-width: 23rem;
+  width: 100%;
   height: 2.875rem;
   border-radius: 4px;
   font-size: 0.875rem;

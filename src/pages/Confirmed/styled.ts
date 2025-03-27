@@ -25,6 +25,17 @@ export const ConfirmedArea = styled.div`
 
   img {
     width: 30.75rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    
+    img {
+      width: 100%; /* Ajusta a largura da imagem para 100% em telas menores */
+      margin-top: 4rem;
+    }
   }
 `;
 
@@ -39,7 +50,7 @@ export const ConfirmedAreaDelivery = styled.div`
 export const InnerContainer = styled.div`
   background: ${(props) => props.theme["gray-100"]};
   border-radius: 8px 35px 8px 35px;
-  padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  padding: 1.25rem;
 `;
 
 export const ConfirmedInfo = styled.div`
@@ -64,6 +75,11 @@ export const ConfirmedInfo = styled.div`
   strong {
     word-wrap: break-word;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 

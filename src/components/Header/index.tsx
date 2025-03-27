@@ -11,7 +11,7 @@ export function Header() {
         <img src={logoImg} height={'40'}/>
       </NavLink>
       <LocationAndCart>
-        <Localization> <MapPin size={20} weight="fill" /> Fortaleza, CE</Localization>
+        <Localization> <MapPin size={'1.25rem'} weight="fill" /> Fortaleza, CE</Localization>
         <Cart $color='yellow-500' $background='yellow-100'/>
       </LocationAndCart>
     </NavContainer>
