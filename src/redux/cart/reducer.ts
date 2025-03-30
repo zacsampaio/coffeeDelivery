@@ -1,12 +1,14 @@
 import { CartActionTypes } from "./action-types";
-import { ActionType, CartState } from "./types";
-
+import { CartState, ActionType } from "./types";
 
 const initialState: CartState = {
   products: [],
 };
 
-export function cartReducer(state = initialState, action: ActionType) {
+export function cartReducer(
+  state = initialState,
+  action: ActionType
+): CartState {
   switch (action.type) {
     case CartActionTypes.INCREASE_PRODUCT: {
       const productIsAlreadyInCart = state.products.some(
@@ -30,10 +32,10 @@ export function cartReducer(state = initialState, action: ActionType) {
           ...state.products,
           { ...action.payload, quantity: action.payload.quantity || 1 },
         ],
-      }
-    };
+      };
+    }
 
-    case CartActionTypes.DECREASE_PRODUCT:
+    case CartActionTypes.DECREASE_PRODUCT: {
       return {
         ...state,
         products: state.products
@@ -44,12 +46,16 @@ export function cartReducer(state = initialState, action: ActionType) {
           )
           .filter((product) => product.quantity > 0),
       };
+    }
 
-    case CartActionTypes.REMOVE_PRODUCT:
+    case CartActionTypes.REMOVE_PRODUCT: {
       return {
         ...state,
-        products: state.products.filter((product) => product.id !== action.payload.id)
-      }
+        products: state.products.filter(
+          (product) => product.id !== action.payload.id
+        ),
+      };
+    }
 
     default:
       return state;

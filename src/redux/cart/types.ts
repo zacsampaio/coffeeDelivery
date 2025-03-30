@@ -7,5 +7,4 @@ export interface CartState {
 export type ActionType =
   | { type: "INCREASE_PRODUCT"; payload: ProductsType }
   | { type: "DECREASE_PRODUCT"; payload: ProductsType }
-  | { type: "REMOVE_PRODUCT"; payload: ProductsType }
-
+  | { type: "REMOVE_PRODUCT"; payload: ProductsType };
