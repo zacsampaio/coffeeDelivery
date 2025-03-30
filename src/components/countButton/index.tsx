@@ -1,26 +1,37 @@
-import { useState } from "react";
-import { CountButtonComponents, CountButtonQuantity, CountQuantity } from "./styled";
+import { useDispatch, useSelector } from "react-redux";
+import { ProductsType } from "../../redux/cart/action-types";
+import {
+  CountButtonComponents,
+  CountButtonQuantity,
+  CountQuantity,
+} from "./styled";
+import { decreaseProduct, increaseProduct } from "../../redux/cart/action";
+import { RootState } from "../../redux/root-reducer";
+
+interface CountButtonProps {
+  product: ProductsType;
+}
+
+export function CountButton({ product }: CountButtonProps) {
+  const dispatch = useDispatch()
+  const productInCart = useSelector((state: RootState) => 
+    state.cartReducer.products.find((p) => p.id === product.id))
 
 
-export function CountButton(){
-  const [quantity, setQuantity] = useState(0)
-
-  function handleDecreaseQuantity(){
-    setQuantity(quantity - 1)
-    if (quantity <= 0){
-      setQuantity(quantity)
-    }
+  function handleAddProductToCart(){
+    dispatch(increaseProduct(product))
   }
 
-  function handleIncreaseQuantity(){
-    setQuantity(quantity + 1)
+  function handleDecreaseProduct(){
+    dispatch(decreaseProduct(product))
   }
+
 
   return (
     <CountButtonComponents>
-      <CountButtonQuantity onClick={handleDecreaseQuantity}>-</CountButtonQuantity>
-      <CountQuantity>{quantity}</CountQuantity>
-      <CountButtonQuantity onClick={handleIncreaseQuantity}>+</CountButtonQuantity>
+      <CountButtonQuantity onClick={handleDecreaseProduct}>-</CountButtonQuantity>
+      <CountQuantity>{productInCart?.quantity ?? 0}</CountQuantity>
+      <CountButtonQuantity onClick={handleAddProductToCart}>+</CountButtonQuantity>
     </CountButtonComponents>
-  )
+  );
 }

@@ -1,20 +1,36 @@
 import { ShoppingCart } from "phosphor-react";
 import { NavLink } from "react-router-dom";
-import { CartContainer } from "./styles";
+import { CartButtonContainer, CartContainer } from "./styles";
+import { RootState } from "../../redux/root-reducer";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { ProductsType } from "../../redux/cart/action-types";
 
 export interface CartProps {
-  $color: string,
-  $background: string,
+  $color: string;
+  $background: string;
+  showBadge?: boolean;
 }
 
+export function Cart({ $color, $background, showBadge }: CartProps) {
+  const { products } = useSelector((state: RootState) => state.cartReducer);
 
-export function Cart({ $color, $background }: CartProps){
+  const productCount = useMemo(() => {
+    return products.reduce(
+      (acc: number, curr: ProductsType) => acc + curr.quantity,
+      0
+    );
+  }, [products]);
 
-  return(
-    <NavLink to="/checkout" title="Checkout">
-    <CartContainer $color={$color} $background={$background}>
-      <ShoppingCart size={20} weight="fill"/>
-    </CartContainer>          
-  </NavLink>
-  )
+  return (
+    <CartContainer>
+      <NavLink to="/checkout" title="Checkout">
+        <CartButtonContainer $color={$color} $background={$background}>
+          <ShoppingCart size={20} weight="fill" />
+        </CartButtonContainer>
+        {showBadge && productCount > 0 && 
+          (<span>{productCount}</span>)}
+      </NavLink>
+    </CartContainer>
+  );
 }

@@ -13,7 +13,6 @@ import confirmedImg from "../../../public/assets/Confimed.svg";
 
 export function Confirmed() {
   const address = {
-    id: 1,
     street: "Rua João Daniel Martinelli",
     number: "102",
     neighborhood: "Farrapos",
@@ -22,8 +21,8 @@ export function Confirmed() {
   };
 
   const deliveryTime = {
-    min: 20,
-    max: 30,
+    min: 30,
+    max: 50,
   };
 
   const paymentMethod = "Cartão de Crédito";

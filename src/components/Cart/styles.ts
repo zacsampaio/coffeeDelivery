@@ -1,8 +1,28 @@
 import styled from "styled-components";
 import { CartProps } from ".";
 
+export const CartContainer = styled.div`
+  position: relative;
 
-export const CartContainer = styled.button<CartProps>`
+  span{
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: ${(props) => props.theme["yellow-500"]};
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+`
+
+export const CartButtonContainer = styled.button<CartProps>`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -23,8 +23,23 @@ import {
 } from "./styled";
 import { CardCart } from "./components/cardCart";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
+import { useMemo } from "react";
+import { ProductsType } from "../../redux/cart/action-types";
 
 export function Checkout() {
+  const { products } = useSelector((state: RootState) => state.cartReducer)
+
+  const valueProducts = useMemo(() => {
+    return products.reduce((acc: number, curr: ProductsType) => acc + (curr.price * curr.quantity), 0)
+  }, [products])
+
+  const valueDelivery = 5
+
+  const totalValue = valueProducts + valueDelivery
+
+
   return (
     <CheckoutComponents>
       <CheckoutAreaForm>
@@ -36,17 +51,17 @@ export function Checkout() {
           </CheckoutFormTitles>
           <p>Informe o endereço onde deseja receber seu pedido</p>
           <CheckoutFormInputs>
-            <input placeholder="CEP" />
+            <input placeholder="CEP" required/>
           </CheckoutFormInputs>
-          <input placeholder="Rua" />
+          <input placeholder="Rua"  required/>
           <CheckoutFormInputs>
-            <input placeholder="Número" />
-            <input placeholder="Complemento"/>
+            <input placeholder="Número" required/>
+            <input placeholder="Complemento" required={false}/>
           </CheckoutFormInputs>
           <CheckoutFormInputs>
-            <input placeholder="Bairro" />
-            <input placeholder="Cidade" />
-            <input placeholder="UF" />
+            <input placeholder="Bairro" required/>
+            <input placeholder="Cidade" required/>
+            <input placeholder="UF"required />
           </CheckoutFormInputs>
         </CheckoutForm>
         <CheckoutPaymentMethods>
@@ -78,22 +93,31 @@ export function Checkout() {
       <CheckoutAreaPayments>
         <h3>Cafés selecionados</h3>
         <CheckoutPayments>
-          <CardCart />
-          <CardCart />
+          {products
+            .filter(product => product.quantity > 0)
+            .map((product) => (
+              <CardCart
+                key={product.id}
+                product={product}
+              />
+            )
+          )}
           <CheckoutTotalItems>
             <p>Total de Itens</p>
-            <p>R$ 29,70</p>
+            <p>R$ {valueProducts.toFixed(2)}</p>
           </CheckoutTotalItems>
-          <CheckoutDelivery>
+          {valueProducts > 0 &&
+            <CheckoutDelivery>
             <p>Entrega</p>
-            <p>R$ 3,50</p>
-          </CheckoutDelivery>
+            <p>R$ {valueDelivery.toFixed(2)}</p>
+            </CheckoutDelivery>
+           }
           <CheckoutTotal>
             <p>Total</p>
-            <p>R$ 33,20</p>
+            <p>R$ { valueProducts > 0 ? totalValue.toFixed(2) : valueProducts.toFixed(2)}</p>
           </CheckoutTotal>
           <NavLink to="/confirmed" title="Confirmed">
-            <ConfirmedButton>CONFIRMAR PEDIDO</ConfirmedButton>
+            <ConfirmedButton >CONFIRMAR PEDIDO</ConfirmedButton>
           </NavLink>
         </CheckoutPayments>
       </CheckoutAreaPayments>

@@ -16,7 +16,7 @@ export const NavContainer = styled.nav`
     align-items: center;
     gap: 1rem;
   }
-`
+`;
 
 export const LocationAndCart = styled.div`
   display: flex;
@@ -27,17 +27,17 @@ export const LocationAndCart = styled.div`
   @media (max-width: 480px) {
     gap: 0.5rem;
   }
-`
+`;
 
 export const Localization = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background: ${props => props.theme['purple-100']};
-  color: ${props => props.theme['purple-300']};
+  background: ${(props) => props.theme["purple-100"]};
+  color: ${(props) => props.theme["purple-300"]};
   font-weight: 500;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   gap: 0.5rem;
   padding: 0 1rem;
   cursor: pointer;
@@ -49,4 +49,4 @@ export const Localization = styled.button`
     padding: 0 0.8rem;
     height: 2rem;
   }
-`
+`;

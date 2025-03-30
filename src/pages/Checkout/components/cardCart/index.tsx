@@ -1,20 +1,36 @@
 import { CountButton } from "../../../../components/countButton";
-import img from "../../../../../public/assets/coffee/Expresso Tradicional.svg";
 import { CardCartComponents, CardCartComponentsButtons } from "./styled";
 import { RemoveButton } from "../../../../components/removeButton";
+import { ProductsType } from "../../../../redux/cart/action-types";
 
-export function CardCart() {
+interface CardCartProps {
+  product: ProductsType;
+}
+
+export function CardCart({ product} : CardCartProps) {
+
+  const getImage = (name:string) => {
+    const imageUrl = `/assets/coffee/${name}.svg`;
+
+    return imageUrl || "/assets/coffee/default.svg";
+  };
+
   return (
     <CardCartComponents>
-      <img src={img} />
+      <img src={getImage(product.name)} />
       <div>
-        <h3>Expresso Tradicional</h3>
+        <h3>{product.name}</h3>
         <CardCartComponentsButtons>
-          <CountButton />
-          <RemoveButton />
+          <CountButton
+            key={product.id}
+            product={product}
+          />
+          <RemoveButton 
+            product={product}
+          />
         </CardCartComponentsButtons>
       </div>
-      <p>R$ 9,90</p>
+      <p>R$ {product.price.toFixed(2)}</p>
     </CardCartComponents>
   );
 }

@@ -8,37 +8,37 @@ import {
 } from "./styles";
 import { Tag } from "../tag";
 import { CountButton } from "../../../../../../components/countButton";
+import { ProductsType } from "../../../../../../redux/cart/action-types";
 
 interface CardCatalogProps {
-  tags: string[];
-  name: string;
-  description: string;
-  price: number;
+  product: ProductsType
 }
 
-export function CardCatalag({tags, name, description, price}: CardCatalogProps) {
-  const getImage = (name:string) => {
+export function CardCatalag({ product }: CardCatalogProps) {
+  const getImage = (name: string) => {
     const imageUrl = `/assets/coffee/${name}.svg`;
-
     return imageUrl || "/assets/coffee/default.svg";
   };
+
   
-  
+
   return (
     <CardCatalagComponents>
-      <img src={getImage(name)} />
+      <img src={getImage(product.name)} />
       <TagsComponents>
-        {tags.map(item => <Tag title={item} /> )}
+        {product.tags?.map((tag, index) => (
+          <Tag key={index} title={tag} />
+        ))}
       </TagsComponents>
-      <h3>{name}</h3>
-      <TagDescription>
-        {description}
-      </TagDescription>
+      <h3>{product.name}</h3>
+      <TagDescription>{product.description}</TagDescription>
       <TagValue>
         <p>
-          R$ <TagValueSpan>{price.toFixed(2)}</TagValueSpan>
+          R$ <TagValueSpan>{product.price.toFixed(2)}</TagValueSpan>
         </p>
-        <CountButton />
+        <CountButton
+          product={product}
+        />
         <Cart $color="gray-100" $background="purple-500" />
       </TagValue>
     </CardCatalagComponents>
