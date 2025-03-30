@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { RemoveButtonComponents, RemoveButtonStyled} from "./styled";
 import { Trash } from "phosphor-react";
-import { removeProduct } from "../../redux/cart/action";
-import { ProductsType } from "../../redux/cart/action-types";
+import { ProductsType } from "../../redux/cart/types";
+import { removeProduct } from "../../redux/cart/slice";
 
 interface RemoveButtonProps {
   product: ProductsType

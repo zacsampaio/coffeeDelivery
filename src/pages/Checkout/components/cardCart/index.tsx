@@ -1,7 +1,7 @@
 import { CountButton } from "../../../../components/countButton";
 import { CardCartComponents, CardCartComponentsButtons } from "./styled";
 import { RemoveButton } from "../../../../components/removeButton";
-import { ProductsType } from "../../../../redux/cart/action-types";
+import { ProductsType } from "../../../../redux/cart/types";
 
 interface CardCartProps {
   product: ProductsType;

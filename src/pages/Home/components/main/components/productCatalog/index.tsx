@@ -8,7 +8,7 @@ import {
 } from "./styles";
 import { Tag } from "../tag";
 import { CountButton } from "../../../../../../components/countButton";
-import { ProductsType } from "../../../../../../redux/cart/action-types";
+import { ProductsType } from "../../../../../../redux/cart/types";
 
 interface CardCatalogProps {
   product: ProductsType

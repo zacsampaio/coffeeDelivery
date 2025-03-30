@@ -1,10 +1,23 @@
-import { ProductsType } from "./action-types";
-
-export interface CartState {
-  products: ProductsType[]
+export enum CartActionTypes {
+  INCREASE_PRODUCT = "@cart/increaseProduct",
+  DECREASE_PRODUCT = "@cart/decreaseProduct",
+  REMOVE_PRODUCT = "@cart/removeProduct",
 }
 
 export type ActionType =
-  | { type: "INCREASE_PRODUCT"; payload: ProductsType }
-  | { type: "DECREASE_PRODUCT"; payload: ProductsType }
-  | { type: "REMOVE_PRODUCT"; payload: ProductsType };
+  | { type: CartActionTypes.INCREASE_PRODUCT; payload: ProductsType }
+  | { type: CartActionTypes.DECREASE_PRODUCT; payload: ProductsType }
+  | { type: CartActionTypes.REMOVE_PRODUCT; payload: ProductsType };
+
+export interface ProductsType {
+  id: number;
+  tags?: string[];
+  name: string;
+  description?: string;
+  price: number;
+  quantity: number;
+}
+
+export interface CartState {
+  readonly products: ProductsType[];
+}

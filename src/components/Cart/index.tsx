@@ -1,10 +1,10 @@
 import { ShoppingCart } from "phosphor-react";
 import { NavLink } from "react-router-dom";
 import { CartButtonContainer, CartContainer } from "./styles";
-import { RootState } from "../../redux/root-reducer";
+import { RootState } from "../../redux/rootReducer";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { ProductsType } from "../../redux/cart/action-types";
+import { ProductsType } from "../../redux/cart/types";
 
 export interface CartProps {
   $color: string;
@@ -13,7 +13,7 @@ export interface CartProps {
 }
 
 export function Cart({ $color, $background, showBadge }: CartProps) {
-  const { products } = useSelector((state: RootState) => state.cartReducer);
+  const { products } = useSelector((state: RootState) => state.cart);
 
   const productCount = useMemo(() => {
     return products.reduce(

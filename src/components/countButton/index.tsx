@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ProductsType } from "../../redux/cart/action-types";
 import {
   CountButtonComponents,
   CountButtonQuantity,
   CountQuantity,
 } from "./styled";
-import { decreaseProduct, increaseProduct } from "../../redux/cart/action";
-import { RootState } from "../../redux/root-reducer";
+import { RootState } from "../../redux/rootReducer";
+import { ProductsType } from "../../redux/cart/types";
+import { decreaseProduct, increaseProduct } from "../../redux/cart/slice";
 
 interface CountButtonProps {
   product: ProductsType;
@@ -15,7 +15,7 @@ interface CountButtonProps {
 export function CountButton({ product }: CountButtonProps) {
   const dispatch = useDispatch()
   const productInCart = useSelector((state: RootState) => 
-    state.cartReducer.products.find((p) => p.id === product.id))
+    state.cart.products.find((p) => p.id === product.id))
 
 
   function handleAddProductToCart(){

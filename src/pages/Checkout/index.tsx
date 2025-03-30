@@ -24,12 +24,13 @@ import {
 import { CardCart } from "./components/cardCart";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/root-reducer";
+import { RootState } from "../../redux/rootReducer";
 import { useMemo } from "react";
-import { ProductsType } from "../../redux/cart/action-types";
+import { ProductsType } from "../../redux/cart/types";
+
 
 export function Checkout() {
-  const { products } = useSelector((state: RootState) => state.cartReducer)
+  const { products } = useSelector((state: RootState) => state.cart)
 
   const valueProducts = useMemo(() => {
     return products.reduce((acc: number, curr: ProductsType) => acc + (curr.price * curr.quantity), 0)
