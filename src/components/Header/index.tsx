@@ -1,8 +1,8 @@
 import { MapPin } from "phosphor-react";
 import { NavLink } from "react-router-dom";
 import logoImg from "/assets/logo-coffee-delivery.svg";
-import { Localization, LocationAndCart, NavContainer } from "./styles";
-import { Cart } from "../Cart";
+import { Localization, LocationAndCart, NavContainer } from "./styled";
+import { Cart } from "../cartCatalog";
 
 export function Header() {
   return (

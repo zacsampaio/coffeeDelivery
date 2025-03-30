@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { CartProps } from ".";
 
+
 export const CartContainer = styled.div`
   position: relative;
 

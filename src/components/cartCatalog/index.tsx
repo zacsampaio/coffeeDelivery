@@ -1,6 +1,6 @@
 import { ShoppingCart } from "phosphor-react";
 import { NavLink } from "react-router-dom";
-import { CartButtonContainer, CartContainer } from "./styles";
+import { CartButtonContainer, CartContainer } from "./styled";
 import { RootState } from "../../redux/rootReducer";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
