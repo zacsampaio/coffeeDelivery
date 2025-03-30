@@ -5,13 +5,8 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   plugins: [react(), svgr()],
   assetsInclude: ['**/*.svg'],
-  server: {
-    fs: {
-      strict: false
-    },
-    proxy: {},
-    historyApiFallback: {
-      index: '/',
-    },
-  },
+  base: '/',  
+  build: {
+    outDir: 'dist'
+  }
 })
