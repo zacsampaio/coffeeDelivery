@@ -18,11 +18,13 @@ export function CountButton({ product }: CountButtonProps) {
     state.cart.products.find((p) => p.id === product.id))
 
 
-  function handleAddProductToCart(){
+  function handleAddProductToCart(e: React.MouseEvent){
+    e.preventDefault();
     dispatch(increaseProduct(product))
   }
 
-  function handleDecreaseProduct(){
+  function handleDecreaseProduct(e: React.MouseEvent){
+    e.preventDefault();
     dispatch(decreaseProduct(product))
   }
 

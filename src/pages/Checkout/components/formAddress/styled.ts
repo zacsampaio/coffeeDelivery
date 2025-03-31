@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CheckoutForm = styled.form`
+export const CheckoutForm = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
@@ -15,6 +15,11 @@ export const CheckoutForm = styled.form`
     margin-bottom: 2rem;
   }
 
+  @media (max-width: 1289px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   @media (min-width: 600px) {
     grid-template-columns: repeat(3, 1fr); /* Três colunas para organização */
   }
@@ -27,8 +32,10 @@ export const CheckoutForm = styled.form`
     grid-template-columns: 1fr; /* Rua ocupa linha inteira */
   }
 
-  &:nth-child(3) {
-    grid-template-columns: 12.5rem 1fr; /* Número e Complemento */
+  .address-line-3 {
+    display: grid;
+    grid-template-columns: 12.5rem 1fr; /* Número fixo e Complemento flexível */
+    gap: 1rem;
   }
 
   &:nth-child(4) {
@@ -71,6 +78,27 @@ export const CheckoutFormInputs = styled.div`
 
   input {
     width: 100%;
+  }
+
+  .complement-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .complement-container input {
+    padding-right: 4rem;
+    width: 100%;
+  }
+
+  .optional-text {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-120%);
+    font-size: 0.7rem;
+    color: ${(props) => props.theme["gray-600"]};
+    font-style: italic;
+    pointer-events: none;
   }
 
   @media (min-width: 600px) {

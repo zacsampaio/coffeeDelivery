@@ -36,12 +36,6 @@ export const GlobalStyled = createGlobalStyle`
       max-height: 100dvh;
     }
 
-    body{
-      display: flex;
-      align-items: center;
-      justify-content: center
-      
-    }
     
   }
 
@@ -50,13 +44,6 @@ export const GlobalStyled = createGlobalStyle`
       font-size: 60%;
       max-width: 100dvw;
       max-height: 100dvh;
-    }
-
-    body{
-      display: flex;
-      align-items: center;
-      justify-content: center
-      
     }
     
   }
@@ -67,14 +54,6 @@ export const GlobalStyled = createGlobalStyle`
       max-width: 100dvw;
       max-height: 100dvh;
     }
-
-    body{
-      display: flex;
-      align-items: center;
-      justify-content: center
-      
-    }
-
   }
 
   @media (max-width: 375px) {
@@ -84,13 +63,6 @@ export const GlobalStyled = createGlobalStyle`
       max-height: 100dvh;
     }
     
-    body{
-      display: flex;
-      align-items: center;
-      justify-content: center
-      
-    }
-
   }
 
 `;

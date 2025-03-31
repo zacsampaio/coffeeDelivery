@@ -10,22 +10,18 @@ import {
   ItemTimer,
 } from "./styled";
 import confirmedImg from "../../../public/assets/Confimed.svg";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/rootReducer";
 
 export function Confirmed() {
-  const address = {
-    street: "Rua João Daniel Martinelli",
-    number: "102",
-    neighborhood: "Farrapos",
-    city: "Porto Alegre",
-    state: "RS",
-  };
+  const address = useSelector((state: RootState) => state.address); 
+  const paymentMethod = useSelector((state: RootState) => state.paymentMethod.paymentMethod)
 
   const deliveryTime = {
     min: 30,
     max: 50,
   };
 
-  const paymentMethod = "Cartão de Crédito";
 
   return (
     <ConfirmedContainer>

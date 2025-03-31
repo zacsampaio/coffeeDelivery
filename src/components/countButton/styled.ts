@@ -35,7 +35,7 @@ export const CountButtonQuantity = styled.button`
 `
 
 export const CountQuantity = styled.span`
-  font-size: 0.75;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 160%;
 `

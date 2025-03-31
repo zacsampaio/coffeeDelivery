@@ -7,12 +7,30 @@ export const HeaderHomeContainer = styled.div`
   flex-direction: row;
   gap: 3rem;
   min-height: 34rem;
-  flex-wrap: wrap;
+  margin: 0 auto; 
+  padding: 0 1rem;
 
   img {
-    width: 29.75rem;
+    width: 100%;
+    max-width: 40rem; 
     height: auto;
+    display: block; /* Remove espaços extras */
+    margin: 0 auto; /* Garante centralização */
   }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    img {
+      width: 90%;
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+  } 
 `;
 
 export const HeaderHomeTitles = styled.div`
@@ -31,6 +49,11 @@ export const HeaderHomeTitles = styled.div`
     font-family: "Roboto";
     font-size: 1.25rem;
   }
+
+  @media (max-width: 1024px) {
+    text-align: center;
+    align-items: center;
+  }
 `;
 
 export const HeaderHomeItems = styled.div`
@@ -48,6 +71,13 @@ export const HeaderHomeItems = styled.div`
     gap: 1rem;
     font-weight: 400;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 943px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
 `;
 

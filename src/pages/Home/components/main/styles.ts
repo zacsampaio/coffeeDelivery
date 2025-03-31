@@ -8,6 +8,7 @@ export const HeaderMainContainer = styled.div`
     font-weight: 800;
     line-height: 130%;
     font-family: "Baloo 2", sans-serif;
+    margin-top: 6rem;
   }
 `
 
@@ -19,7 +20,7 @@ export const HeaderMainCatalog = styled.div`
   flex: 1;
 
   @media (max-width: 1440px) {
-    justify-content: flex-start; 
+    justify-content: center; 
   }
 
   @media (max-width: 1024px) {

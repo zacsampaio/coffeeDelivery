@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CheckoutComponents = styled.div`
+export const CheckoutComponents = styled.form`
   background: ${(props) => props.theme["white"]};
   display: grid;
   grid-template-columns: 1fr;
@@ -9,6 +9,10 @@ export const CheckoutComponents = styled.div`
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 448px;
+  }
+
+  @media (max-width: 1280px) {
+    grid-template-columns: 1fr
   }
 `;
 
@@ -29,17 +33,20 @@ export const CheckoutAreaForm = styled.div`
 
 export const CheckoutAreaPayments = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
   gap: 1rem;
-  height: fit-content;
+  width: 100%; 
+  align-items: stretch;
 
   h3 {
     font-family: "Baloo 2", sans-serif;
     font-size: 1.125rem;
     font-weight: bold;
     color: ${(props) => props.theme["gray-800"]};
+  }
+
+  @media (max-width: 1289px) {
+    width: 100%;
   }
 `;
 

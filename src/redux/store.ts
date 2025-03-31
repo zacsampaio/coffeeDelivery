@@ -4,12 +4,15 @@ import { CartState } from "./cart/types";
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import { loadState, saveState } from "./localStorage";
+import { AddressType } from "./address/types";
 
-type ApplicationState = {
+export type ApplicationState = {
   cart: CartState;
+  address: AddressType
+  paymentMethod: { paymentMethod: string | null };
 };
 
-const persistedState = loadState();
+const persistedState = loadState()
 
 export const store: Store<ApplicationState> = configureStore({
   reducer: rootReducer,
@@ -18,7 +21,6 @@ export const store: Store<ApplicationState> = configureStore({
 });
 
 store.subscribe(() => {
-  const state = store.getState();
-  saveState(state.cart)
+  saveState(store.getState());
 })
 

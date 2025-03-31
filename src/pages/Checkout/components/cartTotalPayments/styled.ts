@@ -7,10 +7,11 @@ export const CheckoutPayments = styled.div`
   border-radius: 8px;
   padding: 2.5rem;
   width: 100%;
-  max-width: 28rem;
+  max-width: none;
   overflow-wrap: break-word;
   border-radius: 8px 35px 8px 35px;
   margin-bottom: 2rem;
+
 `;
 
 export const CheckoutTotalItems = styled.div`
@@ -30,6 +31,7 @@ export const CheckoutDelivery = styled.div`
   color: ${(props) => props.theme["gray-700"]};
   margin-bottom: 1rem;
 `;
+
 export const CheckoutTotal = styled.div`
   display: flex;
   justify-content: space-between;
@@ -43,7 +45,6 @@ export const CheckoutTotal = styled.div`
 export const ConfirmedButton = styled.button`
   color: ${(props) => props.theme["white"]};
   background: ${(props) => props.theme["yellow-300"]};
-  max-width: 23rem;
   width: 100%;
   height: 2.875rem;
   border-radius: 4px;
@@ -55,5 +56,9 @@ export const ConfirmedButton = styled.button`
 
   &:hover {
     background: ${(props) => props.theme["yellow-500"]};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;

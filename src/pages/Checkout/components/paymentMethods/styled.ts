@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+interface ButtonProps {
+  selected: boolean
+}
 
 export const CheckoutPaymentMethods = styled.div`
   display: flex;
@@ -59,8 +62,30 @@ export const CheckoutPaymentMethodsButtons = styled.div`
       background: ${(props) => props.theme["gray-500"]};
     }
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     @media (min-width: 480px) {
       flex: 1 1 auto;
     }
+  }
+`;
+
+export const PaymentButton = styled.button<ButtonProps>`
+  padding: 10px;
+  margin: 5px;
+  border: ${({ selected, theme }) => (selected ? `2px solid ${theme["purple-300"]}` : `1px solid ${theme["gray-500"]}`)};
+  background: ${({ selected, theme }) => (selected ? `${theme["gray-400"]}` : `${theme["gray-100"]}`)};
+  cursor: pointer;
+  transition: border 0.1s ease-in-out;
+
+  &:hover {
+    border: 1px solid ${(props) => props.theme["purple-300"]};
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;

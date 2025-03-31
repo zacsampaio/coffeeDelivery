@@ -1,26 +1,58 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { rootReducer } from "./rootReducer";
 import logger from "redux-logger";
-import { CartState } from "./cart/types";
+import { ApplicationState } from "./store";
 
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem("cart");
+    const serializedState = localStorage.getItem("appState");
     if (serializedState) {
-      return { cart: JSON.parse(serializedState)};
+      const parsedState = JSON.parse(serializedState);
+      return {
+        cart: {
+          products: Array.isArray(parsedState.cart?.products)
+            ? parsedState.cart.products
+            : [],
+        },
+        paymentMethod: { 
+          paymentMethod: parsedState.paymentMethod?.paymentMethod || null 
+        },
+        address: parsedState.address || {
+          zipCode: '',
+          street: '',
+          number: '',
+          complement: '',
+          neighborhood: '',
+          city: '',
+          state: '',
+        }
+      };
     }
   } catch (err) {
-    console.error("Erro ao carregar o estado do localStorage", err);
+    console.error("Could not load state", err);
   }
-  return undefined;
+  return {
+    cart: { products: [] },
+    paymentMethod: { paymentMethod: null },
+    address: {
+      zipCode: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      city: '',
+      state: '',
+    }
+  };
 };
 
-export const saveState = (state: CartState) => {
+export const saveState = (state: ApplicationState) => {
   try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem("cart", serializedState);
+    const { cart, paymentMethod, address } = state;
+    const serializedState = JSON.stringify({ cart, paymentMethod, address });
+    localStorage.setItem("appState", serializedState);
   } catch (err) {
-    console.error("Erro ao carregar o estado do localStorage", err);
+    console.error("Error saving state to localStorage", err);
   }
 };
 
@@ -33,8 +65,5 @@ export const store = configureStore({
 });
 
 store.subscribe(() => {
-  const state = store.getState();
-  saveState(state.cart)
+  saveState(store.getState());
 })
-
-
