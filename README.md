@@ -51,3 +51,6 @@ Neste projeto, pude aprimorar:
 ---
 
 Este projeto faz parte de um desafio de aprendizado e está em constante evolução! 😊☕
+
+Desafio e imagens propostas pela Rocketseat!
+
