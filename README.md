@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# Projeto: CoffeeDelivery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto foi desenvolvido como parte de um desafio, onde a aplicação foi criada do zero. Trata-se de uma plataforma de catálogo e compra de cafés, permitindo aos usuários navegar por uma variedade de opções e realizar pedidos de forma eficiente. 
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática ao código.
+- **Vite**: Ferramenta de build rápida e leve para projetos front-end.
+- **Redux Toolkit**: Conjunto de ferramentas oficial para gerenciamento de estado no Redux, simplificando a configuração e o uso do Redux.
+- **React Hook Form**: Biblioteca para gerenciamento de formulários em React, focada em performance e facilidade de uso.
+- **Zod**: Biblioteca de validação de esquemas TypeScript-first, utilizada para validação de dados.
+- **Styled Components**: Biblioteca para estilização de componentes em React utilizando CSS-in-JS.
+- **React Router DOM**: Biblioteca para roteamento em aplicações React, permitindo navegação entre diferentes páginas.
+- **Phosphor React**: Conjunto de ícones flexíveis para interfaces de usuário, integrados como componentes React.
+- **Vite Plugin SVGR**: Plugin para importar arquivos SVG como componentes React.
 
-## Expanding the ESLint configuration
+## Funcionalidades da Aplicação
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Catálogo de Cafés**: Exibição de uma lista de diferentes tipos de cafés disponíveis para compra.
+- **Gerenciamento de Carrinho**: Adição e remoção de itens no carrinho de compras, com persistência dos dados utilizando Redux Toolkit e armazenamento no `localStorage`.
+- **Formulário de Checkout**: Formulário para inserção de dados do cliente, validado com Zod e gerenciado com React Hook Form.
+- **Navegação**: Roteamento entre páginas utilizando React Router DOM, permitindo navegação fluida entre o catálogo, checkout e confirmação de pedido.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Aprendizados e Melhorias
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Neste projeto, pude aprimorar:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- A utilização do Redux Toolkit para gerenciar o estado da aplicação de forma eficiente.
+- A integração de React Hook Form com Zod para validação e manipulação de formulários.
+- O uso de Styled Components para criar estilos dinâmicos e organizados.
+- A implementação de navegação fluida com React Router DOM.
+- O armazenamento e recuperação de informações no `localStorage` para manter a persistência dos dados do carrinho.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Como Rodar o Projeto
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/zacsampaio/coffeeDelivery.git
+   ```
+2. Navegue até a pasta do projeto e instale as dependências:
+   ```bash
+   cd coffeeDelivery && npm install
+   ```
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+4. Acesse a aplicação no navegador através do endereço exibido no terminal.
+
+---
+
+Este projeto faz parte de um desafio de aprendizado e está em constante evolução! 😊☕
