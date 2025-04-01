@@ -1,5 +1,5 @@
 import { CardCatalag } from "./components/productCatalog";
-import { HeaderMainCatalog, HeaderMainContainer } from "./styles";
+import { HeaderMainCatalog, HeaderMainContainer } from "./styled";
 import { products } from "../../../../data/products";
 
 export function HeaderMain() {

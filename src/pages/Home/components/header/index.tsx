@@ -8,7 +8,7 @@ import {
   ItemCoffee,
   ItemPackage,
   ItemTimer,
-} from "./styles";
+} from "./styled";
 
 export function HeaderHome() {
   return (
